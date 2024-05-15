@@ -23,9 +23,9 @@ module top_mlp #(
 	parameter TEMP_BUF_DATA_WIDTH = FP_BW*IN_IMG_NUM,
 	parameter TEMP_BUF_DEPTH = 64*IN_IMG_NUM,
 	// parameter Y_BUF
-    parameter Y_BUF_DATA_WIDTH = 32,
+    	parameter Y_BUF_DATA_WIDTH = 32,
 	parameter Y_BUF_ADDR_WIDTH = 32,  							// add in 2023-05-10
-    parameter Y_BUF_DEPTH = 10*IN_IMG_NUM * 4 					// modify in 2024-04-17, y_buf_addr has to increase +4 -> 0 - 396
+    	parameter Y_BUF_DEPTH = 10*IN_IMG_NUM * 4 					// modify in 2024-04-17, y_buf_addr has to increase +4 -> 0 - 396
 )(
     // system interface
     input   wire                            clk,
@@ -40,20 +40,20 @@ module top_mlp #(
     output  wire [Y_BUF_DATA_WIDTH-1:0]     y_buf_data
 );
 
-    localparam X_BUF_INIT_FILE =  "D:/idsl_hw/DSD/x.txt";
-    localparam W_BUF_1_INIT_FILE =  "D:/idsl_hw/DSD/w1.txt"; 	//modify in 2024-05-15
+    	localparam X_BUF_INIT_FILE =  "D:/idsl_hw/DSD/x.txt";
+    	localparam W_BUF_1_INIT_FILE =  "D:/idsl_hw/DSD/w1.txt"; 	//modify in 2024-05-15
 	localparam W_BUF_2_INIT_FILE =  "D:/idsl_hw/DSD/w2.txt";
 	localparam W_BUF_3_INIT_FILE =  "D:/idsl_hw/DSD/w3.txt";
 	localparam W_BUF_4_INIT_FILE =  "D:/idsl_hw/DSD/w4.txt";
 	localparam W_BUF_5_INIT_FILE =  "D:/idsl_hw/DSD/w5.txt";
     
-    wire x_buf_en;
-    wire [$clog2(X_BUF_DEPTH)-1:0] x_buf_addr;
+   	wire x_buf_en;
+   	wire [$clog2(X_BUF_DEPTH)-1:0] x_buf_addr;
 	wire [X_BUF_DATA_WIDTH - 1:0] x_buf_data;
-    wire w_buf_1_en;                             				//add in 2024-05-15
+   	wire w_buf_1_en;                             				//add in 2024-05-15
 	wire [$clog2(W_BUF_1_DEPTH)-1:0] w_buf_1_addr;
 	wire [W_BUF_DATA_WIDTH * W_BUF_1_COL - 1:0] w_buf_1_data;
-    wire w_buf_2_en;
+    	wire w_buf_2_en;
 	wire [$clog2(W_BUF_2_DEPTH)-1:0] w_buf_2_addr;
 	wire [W_BUF_DATA_WIDTH * W_BUF_2_COL - 1:0] w_buf_2_data;
 	wire w_buf_3_en;
@@ -88,21 +88,21 @@ module top_mlp #(
         .x_buf_en(x_buf_en),
         .x_buf_addr(x_buf_addr),
         // w_buffer interface
-		.w_buf_en(w_buf_1_en),									//modify in 2024-05-15
-		.w_buf_addr(w_buf_1_addr),
-		.w_buf_en(w_buf_2_en),
-		.w_buf_addr(w_buf_2_addr),
-		.w_buf_en(w_buf_3_en),
-		.w_buf_addr(w_buf_3_addr),
-		.w_buf_en(w_buf_4_en),
-		.w_buf_addr(w_buf_4_addr),
-		.w_buf_en(w_buf_5_en),
-		.w_buf_addr(w_buf_5_addr),
-		//temp_buf interface
-		.temp_buf_rst(temp_buf_rst),
-		.temp_buf_en(temp_buf_en),
-		.temp_buf_wen(temp_buf_wen),
-		.temp_buf_addr(temp_buf_addr),
+	.w_buf_1_en_o(w_buf_1_en),									//modify in 2024-05-15
+	.w_buf_1_addr_o(w_buf_1_addr),
+	.w_buf_2_en_o(w_buf_2_en),
+	.w_buf_2_addr_o(w_buf_2_addr),
+	.w_buf_3_en_o(w_buf_3_en),
+	.w_buf_3_addr_o(w_buf_3_addr),
+	.w_buf_4_en_o(w_buf_4_en),
+	.w_buf_4_addr_o(w_buf_4_addr),
+	.w_buf_5_en_o(w_buf_5_en),
+	.w_buf_5_addr_o(w_buf_5_addr),
+	//temp_buf interface
+	.temp_buf_rst_o(temp_buf_rst),
+	.temp_buf_en_o(temp_buf_en),
+	.temp_buf_wen_o(temp_buf_wen),
+	.temp_buf_addr_o(temp_buf_addr),
         // processing unit interface
         .prcss_start(prcss_start),
         .prcss_done(prcss_done)
