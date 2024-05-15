@@ -72,8 +72,8 @@ module top_mlp #(
 	wire [TEMP_BUF_DATA_WIDTH - 1:0] temp_buf_data;
 	wire [TEMP_BUF_DATA_WIDTH * TEMP_BUF_DEPTH - 1:0] temp_buf_input
 	
-    wire prcss_start;
-    wire prcss_done;
+    	wire prcss_start;
+    	wire prcss_done;
     
     glbl_ctrl #(
         .BUF_ADDR_WIDTH(32)
@@ -136,27 +136,21 @@ module top_mlp #(
         .DEPTH(X_BUF_DEPTH),
         .INIT_FILE(X_BUF_INIT_FILE)
     ) x_buffer_inst (
-        .clk(clk),
-		.x_buf_en_i(x_buf_en),
-        .wen(),
-		.x_buf_addr_i(x_buf_addr),
-        .din(),
-		.x_buf_data_o(x_buf_data)
-    );
+		.clk(clk), .x_buf_en_i(x_buf_en),
+		.wen(), .x_buf_addr_i(x_buf_addr),
+		.din(), .x_buf_data_o(x_buf_data)
+    		);
     
 	w_buf  #(                      // modify in 2024-05-15
-        .WIDTH(W_BUF_DATA_WIDTH),
+        	.WIDTH(W_BUF_DATA_WIDTH),
 		.DEPTH(W_BUF_1_DEPTH),
 		.COL(W_BUF_1_COL)
 		.INIT_FILE(W_BUF_1_INIT_FILE)
     ) w_buffer_inst1 (
-        .clk(clk),
-		.w_buf_en_i(w_buf_1_en),
-        .wen(),
-		.w_buf_addr_i(w_buf_1_addr),
-        .din(),
-		.w_buf_data_o(w_buf_1_data)
-    );
+		.clk(clk), .w_buf_en_i(w_buf_1_en),
+		.wen(), .w_buf_addr_i(w_buf_1_addr),
+		.din(), .w_buf_data_o(w_buf_1_data)
+		);
 	
 	w_buf  #(                      // add in 2024-05-15
         .WIDTH(W_BUF_DATA_WIDTH),
@@ -164,12 +158,9 @@ module top_mlp #(
 		.COL(W_BUF_2_COL)
 		.INIT_FILE(W_BUF_2_INIT_FILE)
 	) w_buffer_inst2 (
-        .clk(clk),
-		.w_buf_en_i(w_buf_2_en),
-        .wen(),
-		.w_buf_addr_i(w_buf_2_addr),
-        .din(),
-		.w_buf_data_o(w_buf_2_data)
+		.clk(clk), .w_buf_en_i(w_buf_2_en),
+		.wen(), .w_buf_addr_i(w_buf_2_addr),
+		.din(), .w_buf_data_o(w_buf_2_data)
     );
 	
 	w_buf  #(                      // add in 2024-05-15
@@ -178,12 +169,9 @@ module top_mlp #(
 		.COL(W_BUF_3_COL)
 		.INIT_FILE(W_BUF_3_INIT_FILE)
 	) w_buffer_inst3 (
-        .clk(clk),
-		.w_buf_en_i(w_buf_3_en),
-        .wen(),
-		.w_buf_addr_i(w_buf_3_addr),
-        .din(),
-		.w_buf_data_o(w_buf_3_data)
+		.clk(clk), .w_buf_en_i(w_buf_3_en),
+		.wen(), .w_buf_addr_i(w_buf_3_addr),
+		.din(), .w_buf_data_o(w_buf_3_data)
     );
 
 	w_buf  #(                      // add in 2024-05-15
@@ -192,12 +180,9 @@ module top_mlp #(
 		.COL(W_BUF_4_COL)
 		.INIT_FILE(W_BUF_4_INIT_FILE)
 	) w_buffer_inst4 (
-        .clk(clk),
-		.w_buf_en_i(w_buf_4_en),
-        .wen(),
-		.w_buf_addr_i(w_buf_4_addr),
-        .din(),
-		.w_buf_data_o(w_buf_4_data)
+		.clk(clk), .w_buf_en_i(w_buf_4_en),
+		.wen(), .w_buf_addr_i(w_buf_4_addr),
+		.din(), .w_buf_data_o(w_buf_4_data)
     );
 	
 	w_buf  #(                      // add in 2024-05-15
@@ -206,12 +191,9 @@ module top_mlp #(
 		.COL(W_BUF_5_COL)
 		.INIT_FILE(W_BUF_5_INIT_FILE)
 	) w_buffer_inst5 (
-        .clk(clk),
-		.w_buf_en_i(w_buf_5_en),
-        .wen(),
-		.w_buf_addr_i(w_buf_5_addr),
-        .din(),
-		.w_buf_data_o(w_buf_5_data)
+		.clk(clk), .w_buf_en_i(w_buf_5_en),
+		.wen(), .w_buf_addr_i(w_buf_5_addr),
+		.din(), S.w_buf_data_o(w_buf_5_data)
     );
 	
 	temp_buf  #(                      // add in 2024-05-15
