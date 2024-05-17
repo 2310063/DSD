@@ -131,7 +131,7 @@ module top_mlp #(
         .y_buf_data(y_buf_data)
     );
 
-	single_port_bram  #(           //modify in 2024-05-15
+	x_buf  #(           //modify in 2024-05-15
         .WIDTH(X_BUF_DATA_WIDTH),
         .DEPTH(X_BUF_DEPTH),
         .INIT_FILE(X_BUF_INIT_FILE)
